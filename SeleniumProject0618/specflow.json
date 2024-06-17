@@ -1,0 +1,18 @@
+{
+    "bindingCulture": {
+      "name": "en-US"
+    },
+    "language": {
+      "feature": "en"
+    },
+    "unitTestProvider": {
+      "name": "xUnit"
+    },
+    "plugins": [
+      {
+        "name": "SpecFlow.Plus.LivingDocPlugin",
+        "type": "Runtime"
+      }
+    ]
+  }
+  
