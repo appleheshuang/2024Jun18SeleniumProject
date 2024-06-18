@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SeleniumProject0618.Test.Features
+namespace SeleniumProject0618.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -40,7 +40,7 @@ namespace SeleniumProject0618.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Test/Features", "Calculator", "  In order to avoid silly mistakes\n  As a math idiot\n  I want to be told the sum " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Features", "Calculator", "  In order to avoid silly mistakes\n  As a math idiot\n  I want to be told the sum " +
                     "of two numbers", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
