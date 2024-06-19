@@ -1,0 +1,8 @@
+{
+    "baseUrl": "https://specflowoss.github.io/Calculator-Demo/Calculator.html",
+    "username": "testuser",
+    "password": "testpass",
+    "WaitTimeSpan":"10",
+    "PollingInterval": "300"
+}
+  
