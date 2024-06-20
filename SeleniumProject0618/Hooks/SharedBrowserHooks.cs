@@ -21,6 +21,7 @@ namespace SeleniumProject0618.Hooks
         {
             //Initialize a shared BrowserDriver in the global container
             testThreadContainer.BaseContainer.Resolve<BrowserDriver>();
+            // testThreadContainer.RegisterTypeAs<BrowserDriver, BrowserDriver>();
         }
     }
 }

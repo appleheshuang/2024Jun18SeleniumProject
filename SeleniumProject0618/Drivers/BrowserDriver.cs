@@ -21,7 +21,7 @@ namespace SeleniumProject0618.Drivers
         /// <summary>
         /// The Selenium IWebDriver instance
         /// </summary>
-        public IWebDriver Current => _currentWebDriverLazy.Value;
+        public IWebDriver Webdriver => _currentWebDriverLazy.Value;
 
         /// <summary>
         /// Creates the Selenium web driver (opens a browser)
@@ -33,7 +33,8 @@ namespace SeleniumProject0618.Drivers
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
 
             var chromeOptions = new ChromeOptions();
-
+            chromeOptions.AddArgument("start-maximized");
+            chromeOptions.AddArgument("--disable-notifications");
             var chromeDriver = new ChromeDriver(chromeDriverService, chromeOptions);
 
             return chromeDriver;
@@ -51,7 +52,7 @@ namespace SeleniumProject0618.Drivers
 
             if (_currentWebDriverLazy.IsValueCreated)
             {
-                Current.Quit();
+                Webdriver.Quit();
             }
 
             _isDisposed = true;

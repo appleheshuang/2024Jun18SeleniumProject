@@ -2,7 +2,7 @@
 Feature: Calculator 
 
 #dotnet test --test-adapter-path:. --filter "Category=Core" --logger:"xunit;LogFilePath=TestResults/SetupTests_$(date +%Y%m%d%H%M%S).xml"
-#livingdoc test-assembly SpecFlowLivingDocProject/bin/Debug/net8.0/SpecFlowLivingDocProject.dll -t SpecFlowLivingDocProject/bin/Debug/net8.0/TestExecution.json --output ./SpecFlowLivingDocProject/TestResults/TestResultsCore_$(date +%Y%m%d%H%M%S).html 
+#livingdoc test-assembly SeleniumProject0618/bin/Debug/net8.0/SeleniumProject0618.dll -t SeleniumProject0618/bin/Debug/net8.0/TestExecution.json --output ./SeleniumProject0618/TestResults/TestResultsCore_$(date +%Y%m%d%H%M%S).html 
 
 
 Scenario: Add two numbers
@@ -21,5 +21,5 @@ Scenario Outline: Add two numbers permutations
 Examples:
 	| First number | Second number | Expected result |
 	| 0            | 0             | 0               |
-	| -1           | 10            | 9               |
+	| -1           | 10            | 8               |
 	| 6            | 9             | 15              |

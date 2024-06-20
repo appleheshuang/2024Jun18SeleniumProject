@@ -120,7 +120,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Xunit.TraitAttribute("FeatureTitle", "Calculator")]
         [Xunit.TraitAttribute("Description", "Add two numbers permutations")]
         [Xunit.InlineDataAttribute("0", "0", "0", new string[0])]
-        [Xunit.InlineDataAttribute("-1", "10", "9", new string[0])]
+        [Xunit.InlineDataAttribute("-1", "10", "8", new string[0])]
         [Xunit.InlineDataAttribute("6", "9", "15", new string[0])]
         public void AddTwoNumbersPermutations(string firstNumber, string secondNumber, string expectedResult, string[] exampleTags)
         {

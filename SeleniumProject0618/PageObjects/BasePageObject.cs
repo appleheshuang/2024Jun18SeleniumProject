@@ -2,6 +2,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using TechTalk.SpecFlow.Infrastructure;
 
 namespace SeleniumProject0618.PageObjects
 {
@@ -11,14 +12,19 @@ namespace SeleniumProject0618.PageObjects
         protected WebDriverWait Wait;
         protected int DefaultWaitInSeconds=10;
 
-        public BasePageObject(IWebDriver driver, int timeoutInSeconds = 10)
+        public ISpecFlowOutputHelper _specFlowOutputHelper;
+
+
+        public BasePageObject(IWebDriver driver, ISpecFlowOutputHelper specFlowOutputHelper, int timeoutInSeconds = 10)
         {
             Driver = driver;
             Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            _specFlowOutputHelper=specFlowOutputHelper;
         }
 
         protected IWebElement FindElement(By by)
         {
+            _specFlowOutputHelper.WriteLine("Find Element");
             return Wait.Until(driver => driver.FindElement(by));
         }
 

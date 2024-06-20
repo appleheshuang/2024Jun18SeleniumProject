@@ -23,7 +23,7 @@ namespace SeleniumProject0618.Hooks
         [BeforeScenario("Calculator")]
         public void BeforeScenario(BrowserDriver browserDriver)
         {
-            var calculatorPageObject = new CalculatorPageObject(browserDriver.Current);
+            var calculatorPageObject = new CalculatorPageObject(browserDriver.Webdriver, _specFlowOutputHelper);
             calculatorPageObject.EnsureCalculatorIsOpenAndReset();
 
             _specFlowOutputHelper.WriteLine("Before Scenario Log");

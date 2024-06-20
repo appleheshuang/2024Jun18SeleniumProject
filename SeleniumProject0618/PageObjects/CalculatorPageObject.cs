@@ -1,16 +1,17 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using TechTalk.SpecFlow.Infrastructure;
 
 namespace SeleniumProject0618.PageObjects{
     public class CalculatorPageObject:BasePageObject
     {
         private const string CalculatorUrl = "https://specflowoss.github.io/Calculator-Demo/Calculator.html";
 
-        public CalculatorPageObject(IWebDriver webDriver):base(webDriver)
-        {
-        }
+        public CalculatorPageObject(IWebDriver webDriver, ISpecFlowOutputHelper specFlowOutputHelper):base(webDriver,specFlowOutputHelper)
+         {
 
+         }
         //Finding elements by ID
         private IWebElement FirstNumberElement => FindElement(By.Id("first-number"));
         private IWebElement SecondNumberElement => FindElement(By.Id("second-number"));
@@ -29,11 +30,11 @@ namespace SeleniumProject0618.PageObjects{
 
               public void EnterSecondNumber(string number)
             {
+                 _specFlowOutputHelper.WriteLine("Find Element");
                 //Clear text box
                 SecondNumberElement.Clear();
                 //Enter text
                 SecondNumberElement.SendKeys(number);
-                
             }
 
         public void ClickAdd()
