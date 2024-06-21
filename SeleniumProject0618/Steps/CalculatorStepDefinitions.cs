@@ -8,23 +8,23 @@ using OpenQA.Selenium;
 namespace SeleniumProject0618.Steps
 {
     [Binding]
-    public sealed class CalculatorStepDefinitions: CalculatorPageObject
+    public sealed class CalculatorStepDefinitions
     {
         //Page Object for Calculator
-        // private readonly CalculatorPageObject _calculatorPageObject;
-        // private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
+        private readonly CalculatorPageObject _calculatorPageObject;
+        private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
 
-        public CalculatorStepDefinitions(BrowserDriver driver, IWebDriver webDriver,ISpecFlowOutputHelper specFlowOutputHelper):base(webDriver, specFlowOutputHelper)
+        public CalculatorStepDefinitions(BrowserDriver browserDriver, ISpecFlowOutputHelper specFlowOutputHelper)
         {
-            // _calculatorPageObject = new CalculatorPageObject(browserDriver.Webdriver, specFlowOutputHelper);
-            // _specFlowOutputHelper = specFlowOutputHelper;
+            _calculatorPageObject = new CalculatorPageObject(browserDriver.Webdriver, specFlowOutputHelper);
+            _specFlowOutputHelper = specFlowOutputHelper;
         }
 
         [Given("the first number is (.*)")]
         public void GivenTheFirstNumberIs(int number)
         {
             //delegate to Page Object
-            EnterFirstNumber(number.ToString());
+            _calculatorPageObject.EnterFirstNumber(number.ToString());
             _specFlowOutputHelper.WriteLine("Given first Number "+ number.ToString());
         }
 
@@ -32,7 +32,7 @@ namespace SeleniumProject0618.Steps
         public void GivenTheSecondNumberIs(int number)
         {
             //delegate to Page Object
-            EnterSecondNumber(number.ToString());
+            _calculatorPageObject.EnterSecondNumber(number.ToString());
             _specFlowOutputHelper.WriteLine("Given Second Number " + number.ToString());
         }
 
@@ -40,14 +40,14 @@ namespace SeleniumProject0618.Steps
         public void WhenTheTwoNumbersAreAdded()
         {
             //delegate to Page Object
-            ClickAdd();
+            _calculatorPageObject.ClickAdd();
         }
 
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int expectedResult)
         {
             //delegate to Page Object
-            var actualResult = WaitForNonEmptyResult();
+            var actualResult = _calculatorPageObject.WaitForNonEmptyResult();
 
             actualResult.Should().Be(expectedResult.ToString());
         }

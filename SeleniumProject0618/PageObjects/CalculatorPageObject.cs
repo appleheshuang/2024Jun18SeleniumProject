@@ -13,7 +13,7 @@ namespace SeleniumProject0618.PageObjects{
 
          }
         //Finding elements by ID
-        private IWebElement FirstNumberElement => FindElement(By.Id("first-number"));
+        private IWebElement FirstNumberElement => FindElementwithFluentWait(By.Id("first-number"));
         private IWebElement SecondNumberElement => FindElement(By.Id("second-number"));
         private IWebElement AddButtonElement => FindElement(By.Id("add-button"));
         private IWebElement ResultElement => FindElement(By.Id("result"));
@@ -21,21 +21,21 @@ namespace SeleniumProject0618.PageObjects{
 
 
         public void EnterFirstNumber(string number)
-            {
-                //Clear text box
-                FirstNumberElement.Clear();
-                //Enter text
-                FirstNumberElement.SendKeys(number);
-            }
+        {
+            //Clear text box
+            FirstNumberElement.Clear();
+            //Enter text
+            FirstNumberElement.SendKeys(number);
+        }
 
-              public void EnterSecondNumber(string number)
-            {
-                 _specFlowOutputHelper.WriteLine("Find Element");
-                //Clear text box
-                SecondNumberElement.Clear();
-                //Enter text
-                SecondNumberElement.SendKeys(number);
-            }
+        public void EnterSecondNumber(string number)
+        {
+            _specFlowOutputHelper.WriteLine("Find Element");
+            //Clear text box
+            SecondNumberElement.Clear();
+            //Enter text
+            SecondNumberElement.SendKeys(number);
+        }
 
         public void ClickAdd()
         {

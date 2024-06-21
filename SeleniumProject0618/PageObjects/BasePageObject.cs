@@ -12,7 +12,7 @@ namespace SeleniumProject0618.PageObjects
         protected WebDriverWait Wait;
         protected int DefaultWaitInSeconds=10;
 
-        public ISpecFlowOutputHelper _specFlowOutputHelper;
+        protected ISpecFlowOutputHelper _specFlowOutputHelper;
 
 
         public BasePageObject(IWebDriver driver, ISpecFlowOutputHelper specFlowOutputHelper, int timeoutInSeconds = 10)
@@ -22,6 +22,7 @@ namespace SeleniumProject0618.PageObjects
             _specFlowOutputHelper=specFlowOutputHelper;
         }
 
+        //  Explicit Wait
         protected IWebElement FindElement(By by)
         {
             _specFlowOutputHelper.WriteLine("Find Element");
@@ -41,19 +42,6 @@ namespace SeleniumProject0618.PageObjects
         protected IWebElement WaitForElementToBeVisible(By by)
         {
             return Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(by));
-        }
-
-        protected void ClickElement(By by)
-        {
-            var element = FindElement(by);
-            element.Click();
-        }
-
-        protected void SendKeys(By by, string text)
-        {
-            var element = FindElement(by);
-            element.Clear();
-            element.SendKeys(text);
         }
 
         protected string GetPageTitle()
@@ -78,37 +66,30 @@ namespace SeleniumProject0618.PageObjects
             Driver.SwitchTo().Frame(frame);
         }
 
-        ///empty the value of input field
-        protected string WaitForInputFieldClearEmpty(By by)
+        public void AcceptAlert()
         {
-            //Wait for the result to be empty
-            return WaitUntil(
-                () => FindElement(by).GetAttribute("value"),
-                result => result == string.Empty);
+            var alert = Driver.SwitchTo().Alert();
+            alert.Accept();
         }
 
-        /// <summary>
-        /// Helper method to wait until the expected result is available on the UI
-        /// </summary>
-        /// <typeparam name="T">The type of result to retrieve</typeparam>
-        /// <param name="getResult">The function to poll the result from the UI</param>
-        /// <param name="isResultAccepted">The function to decide if the polled result is accepted</param>
-        /// <returns>An accepted result returned from the UI. If the UI does not return an accepted result within the timeout an exception is thrown.</returns>
-        private T WaitUntil<T>(Func<T> getResult, Func<T, bool> isResultAccepted) where T: class
+        public void SelectDropdownOption(By locator, string optionText)
         {
-            DefaultWait<IWebDriver> fluentwait=new DefaultWait<IWebDriver>(Driver);
-            fluentwait.Timeout=TimeSpan.FromSeconds(10);
-            fluentwait.PollingInterval=TimeSpan.FromMilliseconds(300);
-            fluentwait.IgnoreExceptionTypes(typeof(ElementNotInteractableException));
-            
-            return fluentwait.Until(driver =>
-            {
-                var result = getResult();
-                if (!isResultAccepted(result))
-                    return default;
-
-                return result;
-            });
+            var dropdown = new SelectElement(Driver.FindElement(locator));
+            dropdown.SelectByText(optionText);
+        }
+        
+        //fluent wait
+        protected IWebElement FindElementwithFluentWait(By by)
+        {
+            DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(Driver);
+            fluentWait.Timeout = TimeSpan.FromSeconds(5);
+            fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
+            fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            fluentWait.Message = "Element to be searched not found";
+ 
+            IWebElement searchResult = fluentWait.Until(x => x.FindElement(by));
+            return searchResult;
         }
     }
 }
+
