@@ -12,7 +12,7 @@ using TechTalk.SpecFlow.Infrastructure;
 public class LoginSteps
 {
     private readonly ScenarioContext _scenarioContext;
-    private IWebDriver _driver;
+    // private IWebDriver _driver;
     private List<User> _users;
 
     private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
@@ -22,7 +22,7 @@ public class LoginSteps
         _specFlowOutputHelper=specFlowOutputHelper;
         _scenarioContext = scenarioContext;
         LoadTestData();
-        _driver = new ChromeDriver();
+        // _driver = new ChromeDriver();
     }
 
     private void LoadTestData()
@@ -51,7 +51,7 @@ public class LoginSteps
     {
         var user = (User)_scenarioContext["user"];
         
-        _driver.Navigate().GoToUrl("https://example.com/login");
+        // _driver.Navigate().GoToUrl("https://example.com/login");
 
         _specFlowOutputHelper.WriteLine("username: " + user.Credentials.Username);
         _specFlowOutputHelper.WriteLine("password: " + user.Credentials.Password);
@@ -79,8 +79,8 @@ public class LoginSteps
     [AfterScenario]
     public void DisposeWebDriver()
     {
-        _driver.Quit();
-        _driver.Dispose();
+        // _driver.Quit();
+        // _driver.Dispose();
     }
 }
 

@@ -84,10 +84,10 @@ namespace SeleniumProject0618.Features
         [Xunit.TraitAttribute("FeatureTitle", "Login")]
         [Xunit.TraitAttribute("Description", "Successful Login with valid credentials")]
         [Xunit.TraitAttribute("Category", "TestLogin")]
-        [Xunit.InlineDataAttribute("admin", "password123", new string[0])]
-        [Xunit.InlineDataAttribute("user1", "user1pass", new string[0])]
-        [Xunit.InlineDataAttribute("user2", "user2pass", new string[0])]
-        public void SuccessfulLoginWithValidCredentials(string username, string password, string[] exampleTags)
+        [Xunit.InlineDataAttribute("admin", "password123", "administrator", new string[0])]
+        [Xunit.InlineDataAttribute("user1", "user1pass", "user", new string[0])]
+        [Xunit.InlineDataAttribute("user2", "user2pass", "user", new string[0])]
+        public void SuccessfulLoginWithValidCredentials(string username, string password, string role, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "TestLogin"};
@@ -99,6 +99,7 @@ namespace SeleniumProject0618.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Username", username);
             argumentsOfScenario.Add("Password", password);
+            argumentsOfScenario.Add("Role", role);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login with valid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
   this.ScenarioInitialize(scenarioInfo);
@@ -115,6 +116,9 @@ namespace SeleniumProject0618.Features
 #line hidden
 #line 6
     testRunner.When("the user clicks the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 7
+    testRunner.Then(string.Format("the user should be logged in successfully as \"{0}\"", role), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
