@@ -130,7 +130,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Second number", secondNumber);
             argumentsOfScenario.Add("Expected result", expectedResult);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers permutations", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -140,17 +140,60 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 16
+#line 15
  testRunner.Given(string.Format("the first number is {0}", firstNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 16
  testRunner.And(string.Format("the second number is {0}", secondNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 17
  testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 18
  testRunner.Then(string.Format("the result should be {0}", expectedResult), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Add two numbers with table")]
+        [Xunit.TraitAttribute("FeatureTitle", "Calculator")]
+        [Xunit.TraitAttribute("Description", "Add two numbers with table")]
+        [Xunit.TraitAttribute("Category", "TestTable")]
+        public void AddTwoNumbersWithTable()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "TestTable"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers with table", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 28
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "First number",
+                            "Second number",
+                            "Expected result"});
+                table1.AddRow(new string[] {
+                            "0",
+                            "0",
+                            "0"});
+                table1.AddRow(new string[] {
+                            "-1",
+                            "10",
+                            "9"});
+                table1.AddRow(new string[] {
+                            "6",
+                            "9",
+                            "15"});
+#line 29
+ testRunner.When("Do two numbers add calculation from table", ((string)(null)), table1, "When ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -51,5 +51,22 @@ namespace SeleniumProject0618.Steps
 
             actualResult.Should().Be(expectedResult.ToString());
         }
+
+       [When("Do two numbers add calculation from table")]
+        public void addTwoNumberandValidate(TechTalk.SpecFlow.Table t)
+        {
+            foreach (var row in t.Rows)
+            {
+                string number1 = row[0];
+                string number2 = row[1];
+                string expectedResult = row[2];
+                _calculatorPageObject.EnterFirstNumber(number1);
+                _calculatorPageObject.EnterSecondNumber(number2);
+                _calculatorPageObject.ClickAdd();
+                var actualResult = _calculatorPageObject.WaitForNonEmptyResult();
+                actualResult.Should().Be(expectedResult);
+            }
+
+        }
     }
 }

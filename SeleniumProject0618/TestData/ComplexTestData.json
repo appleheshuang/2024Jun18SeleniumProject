@@ -1,0 +1,45 @@
+[
+    {
+      "credentials": {
+        "username": "admin",
+        "password": "password123"
+      },
+      "userInfo": {
+        "role": "administrator",
+        "details": {
+          "firstName": "Admin",
+          "lastName": "User",
+          "email": "admin@example.com"
+        }
+      }
+    },
+    {
+      "credentials": {
+        "username": "user1",
+        "password": "user1pass"
+      },
+      "userInfo": {
+        "role": "user",
+        "details": {
+          "firstName": "John",
+          "lastName": "Doe",
+          "email": "john.doe@example.com"
+        }
+      }
+    },
+    {
+      "credentials": {
+        "username": "user2",
+        "password": "user2pass"
+      },
+      "userInfo": {
+        "role": "user",
+        "details": {
+          "firstName": "Jane",
+          "lastName": "Doe",
+          "email": "jane.doe@example.com"
+        }
+      }
+    }
+  ]
+  
