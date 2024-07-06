@@ -156,49 +156,6 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Add two numbers with table")]
-        [Xunit.TraitAttribute("FeatureTitle", "Calculator")]
-        [Xunit.TraitAttribute("Description", "Add two numbers with table")]
-        [Xunit.TraitAttribute("Category", "TestTable")]
-        public void AddTwoNumbersWithTable()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "TestTable"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers with table", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 28
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "First number",
-                            "Second number",
-                            "Expected result"});
-                table1.AddRow(new string[] {
-                            "0",
-                            "0",
-                            "0"});
-                table1.AddRow(new string[] {
-                            "-1",
-                            "10",
-                            "9"});
-                table1.AddRow(new string[] {
-                            "6",
-                            "9",
-                            "15"});
-#line 29
- testRunner.When("Do two numbers add calculation from table", ((string)(null)), table1, "When ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable
